@@ -29,6 +29,11 @@
     }
 
     /* ── HERO IMAGE ──────────────────────────────────────── */
+    .hero-top {
+      background: var(--dark);
+      height: 40px;
+    }
+
     .hero-image {
       background-image: url('assets/img/hero.jpg');
       background-size: cover;
@@ -93,7 +98,7 @@
     }
 
     .card {
-      background: var(--white);
+      background: transparent;
     }
 
     .card img {
@@ -128,16 +133,18 @@
       padding: 5rem 2rem;
     }
 
-    .about-inner {
+    .about-row {
       max-width: 1100px;
-      margin: 0 auto;
+      margin: 0 auto 4rem;
       display: grid;
       grid-template-columns: 2fr 3fr;
       gap: 4rem;
       align-items: start;
     }
 
-    .about-image img {
+    .about-row:last-child { margin-bottom: 0; }
+
+    .about-row img {
       width: 100%;
       display: block;
       object-fit: cover;
@@ -151,8 +158,6 @@
       margin-bottom: 1.25rem;
     }
 
-    .about-text h4 + h4 { margin-top: 3rem; }
-
     .about p {
       font-size: 15px;
       color: var(--text);
@@ -161,7 +166,7 @@
     }
 
     @media (max-width: 768px) {
-      .about-inner {
+      .about-row {
         grid-template-columns: 1fr;
         gap: 2rem;
       }
@@ -312,6 +317,9 @@
 </head>
 <body>
 
+  <!-- Grey padding above hero -->
+  <div class="hero-top"></div>
+
   <!-- HERO IMAGE with centered logo -->
   <section class="hero-image">
     <a href="#"><img class="logo" src="assets/img/logo.png" alt="GJA Consulting"></a>
@@ -358,24 +366,28 @@
   <!-- ABOUT GJA -->
   <section class="about">
     <h2 class="section-title">ABOUT GJA</h2>
-    <div class="about-inner">
 
-      <div class="about-image">
-        <img src="assets/img/about.jpg" alt="About GJA Consulting">
-      </div>
-
-      <div class="about-text">
+    <!-- Row 1: diagram image + OUR APPROACH text -->
+    <div class="about-row">
+      <img src="assets/img/about.jpg" alt="Our approach diagram">
+      <div>
         <h4>OUR APPROACH</h4>
         <p>At GJA Consulting, we bridge technological innovation and business growth by combining financial services expertise with best practices from cutting-edge technology firms. We ensure that technical solutions align seamlessly with business objectives while maintaining an unwavering focus on customer experience.</p>
         <p>Our practical experience navigating digital transformation within Asia's diverse markets sets us apart. Rather than offering generic solutions, we leverage our understanding of regional nuances and global best practices, emphasizing the intersection of customer experience, data analytics, and operational excellence to help organizations build customer-centric, data-driven digital businesses.</p>
         <p>While we understand the challenges of legacy systems and big organizations, we help companies navigate the complexities and enable them to become more agile, deliver frequently, and iterate often to find and implement the right solutions.</p>
+      </div>
+    </div>
 
+    <!-- Row 2: headshot + Our Experience text -->
+    <div class="about-row">
+      <img src="assets/img/headshot.jpg" alt="Guillermo Arbeiza">
+      <div>
         <h4>Our Experience</h4>
         <p>GJA was founded in Singapore by Guillermo Arbeiza, a senior Financial Services and e-commerce executive. Former Chief Customer Officer of Lazada and Singlife, and with experience in companies like Amazon and Singapore Exchange, Guillermo's career spans over 20 years in customer, digital, and technology roles.</p>
         <p>MBA and Computer Engineer graduate, he specializes in managing business and technology to drive growth and create great products and outstanding user experiences worldwide. His expertise ranges from digital, CX, data science and analytics, CRM, marketing, product management, project management, and business development in financial services, online retail, startups, IT companies, and software development projects across Europe, the US, and Southeast Asia.</p>
       </div>
-
     </div>
+
   </section>
 
   <!-- GET IN TOUCH -->
