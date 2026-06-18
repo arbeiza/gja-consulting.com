@@ -1,0 +1,7 @@
+# Scraping artifacts
+scrape_raw.json
+original.html
+
+# OS
+.DS_Store
+Thumbs.db
