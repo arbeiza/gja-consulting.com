@@ -28,64 +28,44 @@
       line-height: 1.6;
     }
 
-    /* ── HEADER ─────────────────────────────────────────── */
-    header {
-      background: var(--dark);
-      padding: 0.75rem 2rem;
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 200;
-    }
-
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-    }
-
-    header img.logo { height: 56px; display: block; }
-
-    /* ── HERO ────────────────────────────────────────────── */
-    .hero {
+    /* ── HERO IMAGE ──────────────────────────────────────── */
+    .hero-image {
       background-image: url('assets/img/hero.jpg');
       background-size: cover;
       background-position: center 30%;
-      background-color: var(--dark);
-      min-height: 70vh;
+      min-height: 55vh;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
+      padding-top: 2rem;
+    }
+
+    .hero-image img.logo {
+      height: 130px;
+      display: block;
+    }
+
+    /* ── HERO TEXT ───────────────────────────────────────── */
+    .hero-text {
+      background: var(--dark);
       text-align: center;
-      padding: 9rem 2rem 5rem;
-      position: relative;
+      padding: 3rem 2rem;
     }
 
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(20, 20, 20, 0.55);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 820px;
-    }
-
-    .hero h1 {
-      font-size: clamp(32px, 5vw, 54px);
+    .hero-text h1 {
+      font-size: clamp(28px, 4vw, 48px);
       font-weight: 700;
       color: var(--warm);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       line-height: 1.2;
     }
 
-    .hero p {
-      font-size: clamp(15px, 2vw, 18px);
+    .hero-text p {
+      font-size: clamp(14px, 1.5vw, 16px);
       color: var(--warm);
-      opacity: 0.9;
+      opacity: 0.85;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
     /* ── SHARED SECTION STYLES ───────────────────────────── */
@@ -332,19 +312,15 @@
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-inner">
-      <a href="#"><img class="logo" src="assets/img/logo.png" alt="GJA Consulting"></a>
-    </div>
-  </header>
+  <!-- HERO IMAGE with centered logo -->
+  <section class="hero-image">
+    <a href="#"><img class="logo" src="assets/img/logo.png" alt="GJA Consulting"></a>
+  </section>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Digital, CX, and Data Consulting</h1>
-      <p>Boutique consulting firm specialized in BFSI. We help Digital businesses grow with a customer-centric, data-driven lens</p>
-    </div>
+  <!-- HERO TEXT: title + subtitle below the image -->
+  <section class="hero-text">
+    <h1>Digital, CX, and Data Consulting</h1>
+    <p>Boutique consulting firm specialized in BFSI. We help Digital businesses grow with a customer-centric, data-driven lens</p>
   </section>
 
   <!-- HOW WE HELP -->
