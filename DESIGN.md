@@ -155,6 +155,40 @@ Represents "move the needle" / growth. In `.hero-rise` SVG:
 - Hosting: Cloudflare Pages/Workers (config added on the remote;
   `cloudflare/workers-autoconfig`). Repo: `github.com/arbeiza/gja-consulting.com`.
 
+## Site files & SEO
+
+- `robots.txt` — allow all, points to the sitemap.
+- `sitemap.xml` — single URL (`https://gja-consulting.com/`).
+- `site.webmanifest` — PWA manifest; `theme_color`/`background_color` = `--ink`.
+- `404.html` — standalone branded not-found page (Cloudflare Pages serves it
+  automatically); mirrors the hero palette/fonts.
+- `_headers` — Cloudflare Pages security + caching headers. The **CSP is tuned
+  to the current inline setup**: `style-src`/`script-src` include
+  `'unsafe-inline'` (the page uses an inline `<style>`, inline `<script>`, and
+  `onclick=` handlers), Google Fonts are whitelisted
+  (`fonts.googleapis.com` for CSS, `fonts.gstatic.com` for the font files), and
+  `form-action` allows `https://formspree.io`. **If you add an external script,
+  refactor inline JS to a file, or change the form endpoint, update the CSP.**
+- `<head>` metadata: canonical, `theme-color`, full icon set, Open Graph,
+  Twitter `summary_large_image`, and `ProfessionalService` + founder `Person`
+  JSON-LD. All absolute URLs use `https://gja-consulting.com/`.
+- Icons: `favicon.ico` (16/32/48) from `favicon.png`; `apple-touch-icon.png`
+  (180), `icon-192.png`, `icon-512.png` from `logo.png`.
+
+### Regenerating the OG image (`assets/img/og.jpg`, 1200×630)
+
+ImageMagick on this machine has **no FreeType delegate**, so it can't render
+text — don't try to compose the card with `magick … -annotate`. Instead render
+it in the browser with the real fonts:
+
+1. Recreate `og-template.html` at the repo root (a 1200×630 page styled like the
+   hero: ink + slate panel, Fraunces title, credibility row, the logo).
+2. Open it in Chrome, set the viewport to exactly 1200×630, wait for
+   `document.fonts.ready`, and screenshot to `assets/img/og.jpg`
+   (`format: jpeg`, quality ~88). The capture comes back at 2× — downscale to
+   1200×630 with `magick`.
+3. Delete `og-template.html` (it's a throwaway, not committed).
+
 ## Workflow notes
 
 - Commits go to `main` (this repo's established pattern). End commit messages
